@@ -1,0 +1,152 @@
+html,
+body {
+  line-height: 1.4;
+  font-weight: normal;
+  font-size: medium;
+  color: black;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+p {
+  font-size: medium;
+}
+li {
+  font-size: medium;
+}
+img {
+  pointer-events: none;
+}
+
+#bg {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  animation-name: fadein;
+  animation-duration: 2s;
+  filter: blur(4px);
+  z-index: -2;
+}
+.single_image {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.single_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.heading {
+  font-size: 20vw;
+  font-weight: bold;
+  text-align: center;
+  color: skyblue;
+}
+.heading.scale-down {
+  transition: 4s;
+  transform: scale(0.25);
+}
+.heading.scale-down.resolve {
+  transition: 1s;
+  transform: scale(1);
+  font-size: 5vw;
+}
+
+.container {
+  /* background-color: skyblue; */
+  opacity: 0.9;
+  padding: 5px;
+  text-align: center;
+}
+
+.outline {
+  margin: 4px;
+  box-shadow: 0 0 5px blue;
+  border-radius: 12px;
+  border-width: 2px;
+  border-color: blue;
+  border-style: solid;
+  background-color: skyblue;
+}
+
+.left {
+  opacity: 0.9;
+  background-color: antiquewhite;
+  width: 50vw;
+  height: 170vh;
+}
+.right {
+  opacity: 0.9;
+  background-color: antiquewhite;
+  width: 50vw;
+  height: 170vh;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: fit-content;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+ 
+}
+
+.secret-btn {
+  opacity: 0.25;
+  border-radius: 7px;
+}
+
+.bulletless-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.bulletless-list li {
+  margin-bottom: 5px;
+}
+
+.violet {
+  color: violet;
+}
+
+.socials li {
+  border-radius: 12px;
+  background-color: violet;
+  color: white;
+  padding: 1vh;
+  min-height: fit-content;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-icon {
+  font-size: xx-large;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
