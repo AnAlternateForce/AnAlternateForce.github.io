@@ -48,7 +48,7 @@ function setup() {
   if (debug) {
     transitionScene("danger");
     interval_1 = setInterval(
-      () => spawn_at_random(2000),
+      () => spawn_at_random(750),
       getRandomDelay(3000, 6000)
     );
 
@@ -64,7 +64,7 @@ function setup() {
       setTimeout(() => {
         transitionScene("danger");
         interval_1 = setInterval(
-          () => spawn_at_random(2000),
+          () => spawn_at_random(750),
           getRandomDelay(2000, 10000)
         );
 

@@ -8,15 +8,15 @@
     { "display": "Video Games" }
   ],
   "games": [
-    { "display": "Blue Archive" },
-    { "display": "The Mimic" },
-    { "display": "Genshin Impact (ps)" },
-    { "display": "My Singing Monsters" },
-    { "display": "Mario Kart Wii" },
-    { "display": "Geometry Dash" },
-    { "display": "Breath of the Wild" },
-    { "display": "Honkai: Star Rail" },
-    { "display": "Planet Coaster" }
+    { "display": "Blue Archive", "favorite": false },
+    { "display": "The Mimic", "favorite": false },
+    { "display": "Genshin Impact (ps)", "favorite": false },
+    { "display": "My Singing Monsters", "favorite": false },
+    { "display": "Mario Kart Wii", "favorite": true },
+    { "display": "Geometry Dash", "favorite": false },
+    { "display": "Breath of the Wild", "favorite": false },
+    { "display": "Honkai: Star Rail", "favorite": false },
+    { "display": "Planet Coaster", "favorite": false }
   ],
   "music": [
     {
@@ -26,6 +26,41 @@
     {
       "display": "Soaring Clouds, Drifting Haze / 雲烟飛動",
       "url": "https://youtu.be/1dm9zGPNIk4?si=L4dP1RlE379bIz82"
+    },
+    {
+      "display": "Blue Archive",
+      "url": "https://youtube.com/playlist?list=PLh6Ws4Fpphfqr7VL72Q6HK5Ole9YI54hv&si=tCu-GJPC7ocyzpI2",
+      "playlist": true
+    },
+    {
+      "display": "Blue Reflection",
+      "url": "https://youtube.com/playlist?list=PLJV5ofhCGvjYQNDq_sUWQYZRdLu7rC21t&si=1zAnSZmD-KiD9sut",
+      "playlist": true
+    },
+    {
+      "display": "Atelier Lulua ~The Scion of Arland~",
+      "url": "https://youtube.com/playlist?list=PLnRMug4bWXzs-FzZNFEzDzP2FO2e9SyiE&si=3_Q7yPYRxP-LgTxh",
+      "playlist": true
+    },
+    {
+      "display": "All Original Touhou 6-16 music",
+      "url": "https://youtube.com/playlist?list=PLkLnTkKXBSxjMGUBkL7cWc9IRtvNVu7Or&si=WbQZAbE7TEbA1I0g",
+      "playlist": true
+    },
+    {
+      "display": "Klugheim",
+      "url": "https://youtube.com/playlist?list=OLAK5uy_n02ftn5Gz5KBrQPzyWSV0MjJ3YzJRrgPQ&si=swfoi-1YSwLoWpna",
+      "playlist": true
+    },
+    {
+      "display": "Rookburgh",
+      "url": "https://youtube.com/playlist?list=OLAK5uy_lxBj86A8qVOMa9RHeCIZBvxa7_sJ95SM4&si=K1Pg_tZ5sSPaYo8N",
+      "playlist": true
+    },
+    {
+      "display": "The Mimic book1",
+      "url": "https://youtube.com/playlist?list=PLXhor8IYjutUbRla95cpws2aHFrlmPAAG&si=Z9T_QGaM1SG1novM",
+      "playlist": true
     }
   ],
   "socials": [

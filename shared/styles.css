@@ -38,9 +38,10 @@ img {
 
 .socials li {
   border-radius: 12px;
-  background-color: violet;
+  font-size: large;
+  background-color: rgba(255, 255, 255, 0.25);
   color: white;
-  padding: 1vh;
+  padding: 0.5px;
   min-height: fit-content;
   display: flex;
   justify-content: center;

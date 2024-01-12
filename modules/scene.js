@@ -54,7 +54,7 @@ export function spawn_at_random(duration) {
   image.src = "../assets/explosion.gif";
 
   const rotatingImage = document.createElement("img");
-  rotatingImage.src = "../assets/particles.png";
+  rotatingImage.src = "../assets/sparks.png";
   rotatingImage.classList.add("rotate2");
 
   /*
@@ -81,13 +81,16 @@ export function spawn_at_random(duration) {
   });
 
   setTimeout(() => {
-    rotatingImage.style.opacity = "0";
-    div.style.opacity = "0";
-    distortion_layer_1.classList.remove("active");
+    image.style.opacity = "0";
 
     setTimeout(() => {
-      document.body.removeChild(div);
-    }, 4000);
+      rotatingImage.style.opacity = "0";
+      distortion_layer_1.classList.remove("active");
+
+      setTimeout(() => {
+        document.body.removeChild(div);
+      }, 4 * 1000);
+    }, 1 * 1000);
   }, duration);
 
   // spawn_rotate_image(sub_div, "../assets/particles.png");

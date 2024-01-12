@@ -30,24 +30,31 @@ export function json_get(category, index) {
 }
 
 export function append_chunk(data, id) {
-  const block = data[id];
+  let block = data[id];
   if (block && block.length > 0) {
-    const list = document.createElement("ul");
+    let list = document.createElement("ul");
     list.classList.add("bulletless-list");
 
     block.forEach((interest) => {
-      const listItem = document.createElement("li");
-      const link = document.createElement("a");
+      let listItem = document.createElement("li");
+      let link = document.createElement("p");
 
       link.textContent = interest.display;
 
       if (interest.url) {
         list.classList.add("hyperlinks", "socials");
-        link.href = interest.url;
 
         listItem.addEventListener("click", () => {
-          link.click();
+          window.location.href = interest.url;
         });
+      }
+
+      if (interest?.favorite) {
+        link.textContent += " 🌟";
+      }
+
+      if (interest?.playlist) {
+        link.textContent += " 📁";
       }
 
       listItem.appendChild(link);

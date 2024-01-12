@@ -241,16 +241,18 @@ img {
   transition: 2s ease-in-out;
   opacity: 0.9;
 }
-.viewport img {
+.viewport img { /* the explosion */
   position: relative;
   height: 30%;
   width: auto;
   z-index: -96;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 
 .rotate2 {
   position: relative;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 1s linear;
   animation: rotate2Anim 3s linear forwards;
   z-index: -100;
