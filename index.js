@@ -56,7 +56,7 @@ function portalTo(x) {
     portal.addEventListener("animationend", function (event) {
       // window.location.href = `https://driftinghaze.github.io/${x}/index.html`;
     });
-  }, 1000);
+  }, 1250);
 
   shakeAll(3);
 }

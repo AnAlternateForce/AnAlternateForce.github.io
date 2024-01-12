@@ -1,4 +1,12 @@
 {
+  "info": [
+    { "nickname": "Sujiha" },
+    { "build_date": "11/01/2024 - 12/01/2024" },
+    {
+      "about": "Built this mainly for fun but also wanted to create something with css animations, so here we are :)"
+    }
+  ],
+  "pixiv": ["89584206", "83589330", "84877389", "88078117", "92525420"],
   "interests": [
     { "display": "Roller Coasters" },
     { "display": "Programming" },
@@ -81,6 +89,5 @@
       "display": "Add me on Revolt! What's Revolt? Discord but 116% better\nUser: Sujiha#4934",
       "url": "https://app.revolt.chat/"
     }
-  ],
-  "pixiv": ["89584206", "83589330", "84877389", "88078117", "92525420"]
+  ]
 }

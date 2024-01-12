@@ -1,3 +1,5 @@
+/* This .css file shall only contain a global structure which can be shared across all sub projects */
+
 html,
 body {
   line-height: 1.4;
