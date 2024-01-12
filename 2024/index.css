@@ -217,10 +217,10 @@ img {
 
 @keyframes pulse {
   0% {
-    transform: rotate(0deg) scale(2);
+    transform: rotate(0deg) scale(5);
   }
   100% {
-    transform: rotate(360deg) scale(2);
+    transform: rotate(360deg) scale(10);
   }
 }
 
