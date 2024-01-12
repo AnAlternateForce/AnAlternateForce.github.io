@@ -42,14 +42,16 @@ function portalTo(x) {
   tutorial.style.color = "red";
 
   portal.classList.add("play");
-  portal.addEventListener("animationend", function (event) {
+  setTimeout(() => {
     window.location.href = `https://driftinghaze.github.io/${x}/index.html`;
+  }, 5 * 1000);
+  portal.addEventListener("animationend", function (event) {
+    // window.location.href = `https://driftinghaze.github.io/${x}/index.html`;
   });
 
   shakeAll(3);
 }
 
-var delay = 400;
 function setup() {
   document.getElementById("2023").addEventListener("click", function () {
     portalTo("2023");
