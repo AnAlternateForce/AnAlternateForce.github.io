@@ -44,7 +44,7 @@ function portalTo(x) {
   portal.classList.add("play");
   setTimeout(() => {
     window.location.href = `https://driftinghaze.github.io/${x}/index.html`;
-  }, 5 * 1000);
+  }, 3 * 1000);
   portal.addEventListener("animationend", function (event) {
     // window.location.href = `https://driftinghaze.github.io/${x}/index.html`;
   });
