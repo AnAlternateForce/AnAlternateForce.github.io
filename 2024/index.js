@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-var debug = true;
+var debug = false;
 
 function setup() {
   append_chunk(data, "interests");
