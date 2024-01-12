@@ -1,0 +1,47 @@
+{
+  "interests": [
+    { "display": "Roller Coasters" },
+    { "display": "Programming" },
+    { "display": "GPT-3 / Stable Diffusion" },
+    { "display": "Linux" },
+    { "display": "Anime" },
+    { "display": "Video Games" }
+  ],
+  "games": [
+    { "display": "Blue Archive" },
+    { "display": "The Mimic" },
+    { "display": "Genshin Impact (ps)" },
+    { "display": "My Singing Monsters" },
+    { "display": "Mario Kart Wii" },
+    { "display": "Geometry Dash" },
+    { "display": "Breath of the Wild" },
+    { "display": "Honkai: Star Rail" },
+    { "display": "Planet Coaster" }
+  ],
+  "music": [
+    {
+      "display": "G Free",
+      "url": "https://open.spotify.com/track/7i93jUiyFhV77cfX3TpJhm?si=dccf1bc91b4d4bc7"
+    }
+  ],
+  "socials": [
+    {
+      "display": "Discord",
+      "url": "https://discord.com/users/1078358650583785495"
+    },
+    {
+      "display": "Roblox",
+      "url": "https://www.roblox.com/users/4519213255/profile"
+    },
+    {
+      "display": "MyAnimeList",
+      "url": "https://myanimelist.net/animelist/Sujiha?status=7&order=4&order2=0"
+    },
+    { "display": "Carrd", "url": "https://sujiha.carrd.co/" },
+    {
+      "display": "Add me on Revolt! What's Revolt? Discord but 116% better\nUser: Sujiha#4934",
+      "url": "https://app.revolt.chat/"
+    }
+  ],
+  "pixiv": ["89584206", "83589330", "84877389", "88078117", "92525420"]
+}
