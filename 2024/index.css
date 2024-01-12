@@ -140,18 +140,6 @@ img {
   color: violet;
 }
 
-.socials li {
-  border-radius: 12px;
-  background-color: violet;
-  color: white;
-  padding: 1vh;
-  min-height: fit-content;
-  height: 5vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .sub-icon {
   font-size: xx-large;
   margin: 0;
@@ -184,7 +172,8 @@ img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(0deg);
-  animation: rotateAnimation 10s linear infinite;
+  animation: rotateAnimation 2s linear infinite;
+  z-index: -97;
 }
 
 .char {
@@ -225,6 +214,21 @@ img {
 }
 
 
+#distortion-layer-1 {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 2s linear;
+  opacity: 0.9;
+  z-index: -90;
+}
+#distortion-layer-1.active {
+  transition: 2s linear;
+  backdrop-filter: blur(10px);
+}
 
 .viewport {
   pointer-events: none;
@@ -233,14 +237,31 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -90;
+  z-index: -100; /* 90 */
   transition: 2s ease-in-out;
+  opacity: 0.9;
 }
-
 .viewport img {
   position: relative;
   height: 30%;
   width: auto;
+  z-index: -96;
+}
+
+.rotate2 {
+  position: relative;
+  opacity: 0;
+  transition: opacity 1s linear;
+  animation: rotate2Anim 3s linear forwards;
+  z-index: -100;
+}
+@keyframes rotate2Anim {
+  0% {
+    transform:rotate(0deg) scale(0);
+  }
+  100% {
+    transform:rotate(360deg) scale(4);
+  }
 }
 
 /* scene items */
@@ -331,7 +352,7 @@ img {
     transform: translateX(125%);
   }
   100% {
-    transform: translateX(-125%);
+    transform: translateX(-175%);
   }
 }
 

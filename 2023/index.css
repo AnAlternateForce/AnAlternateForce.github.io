@@ -129,7 +129,7 @@ img {
   color: white;
   padding: 1vh;
   min-height: fit-content;
-  height: 5vh;
+  /* height: 5vh; */
   display: flex;
   justify-content: center;
   align-items: center;

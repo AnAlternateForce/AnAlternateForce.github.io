@@ -18,6 +18,7 @@ var overlay;
 var interval_1;
 var interval_2;
 var viewport;
+var busy;
 
 document.addEventListener("DOMContentLoaded", () => {
   bg = document.getElementById("bg");
@@ -38,16 +39,24 @@ function portalTo(x) {
   var tutorial = document.getElementById("tutorial");
   var caution = document.getElementById("caution");
 
+  if (busy) {
+    return;
+  }
+  busy = true;
+
   tutorial.textContent = "Hold on tight";
   tutorial.style.color = "red";
 
-  portal.classList.add("play");
   setTimeout(() => {
-    window.location.href = `https://driftinghaze.github.io/${x}/index.html`;
-  }, 3 * 1000);
-  portal.addEventListener("animationend", function (event) {
-    // window.location.href = `https://driftinghaze.github.io/${x}/index.html`;
-  });
+    portal.classList.add("play");
+
+    setTimeout(() => {
+      window.location.href = `https://driftinghaze.github.io/${x}/index.html`;
+    }, 1500);
+    portal.addEventListener("animationend", function (event) {
+      // window.location.href = `https://driftinghaze.github.io/${x}/index.html`;
+    });
+  }, 1000);
 
   shakeAll(3);
 }

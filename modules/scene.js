@@ -3,11 +3,13 @@ var overlay;
 var interval_1;
 var interval_2;
 var viewport;
+var distortion_layer_1;
 
 document.addEventListener("DOMContentLoaded", () => {
   bg = document.getElementById("bg");
   overlay = document.getElementById("overlay");
   viewport = document.getElementById("permanent-viewport");
+  distortion_layer_1 = document.getElementById("distortion-layer-1");
 });
 
 export function rotate(div, deg) {
@@ -36,20 +38,33 @@ export function shakeAll(duration) {
 export function spawn_rotate_image(container, url) {
   const rotatingImage = document.createElement("img");
   rotatingImage.src = url;
-  rotatingImage.classList.add("rotating-image");
+  rotatingImage.classList.add("rotate2");
   container.appendChild(rotatingImage);
 }
 
 export function spawn_at_random(duration) {
+  distortion_layer_1.classList.add("active");
+
   const div = document.createElement("div");
   div.classList.add("viewport");
   div.style.backdropFilter = "blur(10px)";
 
   const image = document.createElement("img");
   image.classList.add("shakeable", "explosion");
-  image.src = "../assets/exp.png";
+  image.src = "../assets/explosion.gif";
+
+  const rotatingImage = document.createElement("img");
+  rotatingImage.src = "../assets/particles.png";
+  rotatingImage.classList.add("rotate2");
+
+  /*
+  sub_div.appendChild(rotatingImage);
+  sub_div.appendChild(image);
+  div.appendChild(sub_div);
+  */
 
   div.appendChild(image);
+  div.appendChild(rotatingImage);
   document.body.appendChild(div);
 
   // Use requestAnimationFrame to wait for layout changes to be applied
@@ -59,18 +74,23 @@ export function spawn_at_random(duration) {
     const randomY = Math.random() * (height - 100);
     image.style.left = randomX + "px";
     image.style.top = randomY + "px";
+
+    rotatingImage.style.left = randomX + "px";
+    rotatingImage.style.top = randomY + "px";
+    rotatingImage.style.opacity = "1";
   });
 
   setTimeout(() => {
-    document.body.removeChild(div);
+    rotatingImage.style.opacity = "0";
+    div.style.opacity = "0";
+    distortion_layer_1.classList.remove("active");
+
+    setTimeout(() => {
+      document.body.removeChild(div);
+    }, 4000);
   }, duration);
 
-  /*
-  spawn_rotate_image(
-    div,
-    "https://pngimg.com/uploads/explosion/explosion_PNG15353.png"
-  );
-  */
+  // spawn_rotate_image(sub_div, "../assets/particles.png");
 
   // Apply Shake
   shakeAll(1);

@@ -37,29 +37,44 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+var debug = true;
+
 function setup() {
   append_chunk(data, "interests");
   append_chunk(data, "games");
   append_chunk(data, "music");
   append_chunk(data, "socials");
 
-  transitionScene("safe");
-  setTimeout(() => {
-    viewport.classList.add("entering-danger");
+  if (debug) {
+    transitionScene("danger");
+    interval_1 = setInterval(
+      () => spawn_at_random(2000),
+      getRandomDelay(3000, 6000)
+    );
 
+    interval_2 = setInterval(
+      () => trigger_effect("heli"),
+      getRandomDelay(8000, 20000)
+    );
+  } else {
+    transitionScene("safe");
     setTimeout(() => {
-      transitionScene("danger");
-      interval_1 = setInterval(
-        () => spawn_at_random(2000),
-        getRandomDelay(2000, 10000)
-      );
+      viewport.classList.add("entering-danger");
 
-      interval_2 = setInterval(
-        () => trigger_effect("heli"),
-        getRandomDelay(8000, 20000)
-      );
-    }, 3000);
-  }, 10 * 1000);
+      setTimeout(() => {
+        transitionScene("danger");
+        interval_1 = setInterval(
+          () => spawn_at_random(2000),
+          getRandomDelay(2000, 10000)
+        );
+
+        interval_2 = setInterval(
+          () => trigger_effect("heli"),
+          getRandomDelay(8000, 20000)
+        );
+      }, 3000);
+    }, 10 * 1000);
+  }
 
   window.scrollTo({
     top: 0,
