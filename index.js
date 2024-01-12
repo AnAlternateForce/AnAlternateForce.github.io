@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initialize() {
-  fetch("data.json")
+  fetch("index.json")
     .then((response) => {
       if (!response.ok) {
         throw new Error(`Error`);
