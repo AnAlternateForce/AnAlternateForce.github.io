@@ -1,0 +1,414 @@
+html,
+body {
+  line-height: 1.4;
+  font-weight: normal;
+  font-size: large;
+  color: white;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+p {
+  font-size: medium;
+}
+li {
+  font-size: medium;
+}
+img {
+  pointer-events: none;
+}
+
+#bg {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  animation-name: fadein;
+  animation-duration: 2s;
+  filter: blur(4px);
+  z-index: -100;
+  animation: zoomInOut 10s infinite
+}
+.single_image {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.single_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.heading {
+  font-size: 20vw;
+  font-weight: bold;
+  text-align: center;
+  color: skyblue;
+}
+.heading.scale-down {
+  transition: 4s;
+  transform: scale(0.25);
+}
+.heading.scale-down.resolve {
+  transition: 1s;
+  transform: scale(1);
+  font-size: 5vw;
+}
+
+.container {
+  /* background-color: skyblue; */
+  opacity: 0.9;
+  padding: 5px;
+  text-align: center;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.outline {
+  margin: 4px;
+  box-shadow: 0 0 5px blue;
+  border-radius: 12px;
+  border-width: 2px;
+  border-color: blue;
+  border-style: solid;
+  /* background-color: skyblue; */
+  backdrop-filter: blur(10px);
+  width: fit-content;
+
+ 
+  border-image: linear-gradient(90deg, blue, violet);
+  border-image-slice: 1;
+  animation: gradientAnimation 4s linear infinite;
+}
+
+.left {
+  opacity: 0.9;
+  background-color: antiquewhite;
+  width: 50vw;
+  height: 170vh;
+}
+.right {
+  opacity: 0.9;
+  background-color: antiquewhite;
+  width: 50vw;
+  height: 170vh;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: fit-content;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+ 
+}
+
+.secret-btn {
+  opacity: 0.25;
+  border-radius: 7px;
+}
+
+.bulletless-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.bulletless-list li {
+  margin-bottom: 5px;
+}
+
+.violet {
+  color: violet;
+}
+
+.socials li {
+  border-radius: 12px;
+  background-color: violet;
+  color: white;
+  padding: 1vh;
+  min-height: fit-content;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-icon {
+  font-size: xx-large;
+  margin: 0;
+  padding: 0;
+}
+
+
+.tilt {
+  transform: rotate(5deg);
+}
+
+.shakeable {
+
+}
+
+.shared-size {
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: center;
+  left: 50%;
+  position: fixed;
+}
+
+.rotating-image {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: rotateAnimation 10s linear infinite;
+}
+
+.char {
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  left: 50%;
+  position: fixed;
+}
+
+/* TO DO MAKE IT BLINK/PULSE */
+#permanent-viewport {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8));
+}
+
+#permanent-viewport.entering-danger {
+  animation: pulse 1.5s infinite;
+  background: linear-gradient(rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.8));
+}
+
+@keyframes pulse {
+  0% {
+    transform: rotate(0deg) scale(2);
+  }
+  100% {
+    transform: rotate(360deg) scale(2);
+  }
+}
+
+
+
+.viewport {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -90;
+  transition: 2s ease-in-out;
+}
+
+.viewport img {
+  position: relative;
+  height: 30%;
+  width: auto;
+}
+
+/* scene items */
+
+#safe-zone-miyu img {
+  transform: scaleX(-1);
+  transition: 1s;
+}
+
+#miyu {
+  z-index: -89;
+}
+
+.explosion {
+  z-index: -97;
+}
+
+
+#heli {
+  z-index: -96;
+  transform: translateX(125%);
+}
+#heli.active {
+  animation: slideLeft 2s linear;
+}
+
+#dust {
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: center;
+  z-index: -98;
+  top: 50%;
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%) rotate(0deg) scale(4);
+  animation: rotateAnimation 6s ease-in-out infinite;
+}
+
+#ocean {
+  pointer-events: none;
+  top: 50%;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  animation-name: fadein;
+  animation-duration: 2s;
+  z-index: -99;
+  animation: zoomInOut 10s infinite;
+
+  position: fixed;
+  transform: translate(-50%, -50%);
+  animation: moveAndRotate 6s ease-in-out infinite;
+  filter: blur(4px);
+}
+
+#overlay {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: white;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+#scroll-direction-hint {
+  z-index: -99;
+  left: 20%;
+  height: 40%;
+  width: auto;
+  position: absolute;
+}
+#scroll-direction-hint img {
+  height: 40%;
+  width: auto;
+}
+
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(125%);
+  }
+  100% {
+    transform: translateX(-125%);
+  }
+}
+
+@keyframes moveAndRotate {
+  0%, 100% {
+    transform: translateY(0) rotate(0);
+  }
+  25% {
+    transform: translateY(25px) rotate(-2.5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0);
+  }
+  75% {
+    transform: translateY(-25px) rotate(2.5deg);
+  }
+}
+
+@keyframes moveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(100px);
+  }
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(4);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(4);
+  }
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}

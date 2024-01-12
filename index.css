@@ -33,41 +33,21 @@ img {
   animation-duration: 2s;
   filter: blur(4px);
   z-index: -100;
-  animation: zoomInOut 10s infinite
-}
-.single_image {
-  width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
-}
-.single_image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
+  animation: zoomInOut 10s infinite;
 }
 
-.heading {
-  font-size: 20vw;
-  font-weight: bold;
-  text-align: center;
-  color: skyblue;
-}
-.heading.scale-down {
-  transition: 4s;
-  transform: scale(0.25);
-}
-.heading.scale-down.resolve {
-  transition: 1s;
-  transform: scale(1);
-  font-size: 5vw;
-}
 
 .container {
   /* background-color: skyblue; */
   opacity: 0.9;
   padding: 5px;
   text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.container:hover {
+  transition: transform 0.2s ease;
+  transform: scale(1.2);
 }
 
 @keyframes gradientAnimation {
@@ -82,7 +62,7 @@ img {
 .outline {
   margin: 4px;
   box-shadow: 0 0 5px blue;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   border-width: 2px;
   border-color: blue;
   border-style: solid;
@@ -94,6 +74,14 @@ img {
   border-image: linear-gradient(90deg, blue, violet);
   border-image-slice: 1;
   animation: gradientAnimation 4s linear infinite;
+}
+
+.centered {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .left {
@@ -122,197 +110,27 @@ img {
  
 }
 
-.secret-btn {
-  opacity: 0.25;
-  border-radius: 7px;
-}
-
-.bulletless-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-.bulletless-list li {
-  margin-bottom: 5px;
-}
-
-.violet {
-  color: violet;
-}
-
-.socials li {
-  border-radius: 12px;
-  background-color: violet;
-  color: white;
-  padding: 1vh;
-  min-height: fit-content;
-  height: 5vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.sub-icon {
-  font-size: xx-large;
-  margin: 0;
-  padding: 0;
-}
-
-
-.tilt {
-  transform: rotate(5deg);
-}
-
-.shakeable {
-
-}
-
-.shared-size {
+#portal {
   pointer-events: none;
   top: 0;
   left: 0;
   object-fit: cover;
   object-position: center;
-  left: 50%;
-  position: fixed;
-}
-
-.rotating-image {
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(0deg);
-  animation: rotateAnimation 10s linear infinite;
-}
-
-.char {
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-  object-position: center;
-  z-index: 0;
-  left: 50%;
-  position: fixed;
-}
-
-/* TO DO MAKE IT BLINK/PULSE */
-#permanent-viewport {
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8));
-}
-#permanent-viewport.entering-danger {
-  animation: pulse 1s infinite;
-}
-@keyframes pulse {
-  0%, 100% {
-    background: linear-gradient(rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.8));
-    transform: scale(1);
-  }
-  50% {
-    background: linear-gradient(rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.8));
-    transform: scale(1.2);
-  }
-}
-
-.viewport {
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -90;
-  transition: 2s ease-in-out;
-}
-
-.viewport img {
-  position: relative;
-  height: 30%;
-  width: auto;
-}
-
-/* scene items */
-
-#safe-zone-miyu img {
-  transform: scaleX(-1);
-  transition: 1s;
-}
-
-#miyu {
-  z-index: -89;
-}
-
-.explosion {
-  z-index: -97;
-}
-
-
-#heli {
-  z-index: -96;
-  transform: translateX(125%);
-}
-#heli.active {
-  animation: slideLeft 2s linear;
-}
-
-#dust {
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-  object-position: center;
-  z-index: -98;
-  top: 50%;
-  left: 50%;
-  position: fixed;
-  transform: translate(-50%, -50%) rotate(0deg) scale(4);
-  animation: rotateAnimation 6s ease-in-out infinite;
-}
-
-#ocean {
-  pointer-events: none;
-  top: 50%;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  object-position: center;
-  animation-name: fadein;
-  animation-duration: 2s;
-  z-index: -99;
-  animation: zoomInOut 10s infinite;
-
-  position: fixed;
-  transform: translate(-50%, -50%);
-  animation: moveAndRotate 6s ease-in-out infinite;
-  filter: blur(4px);
-}
-
-#overlay {
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   z-index: 10;
-  background-color: white;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
+  top: 50%;
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%) rotate(0deg) scale(0);
+}
+#portal.play {
+  animation: rotateAnimation 6s ease-in-out 1 forwards;
 }
 
 #scroll-direction-hint {
   z-index: -99;
-  left: 20%;
+  left: 0;
+  right: 0;
+  top: 25%;
   height: 40%;
   width: auto;
   position: absolute;
@@ -358,10 +176,10 @@ img {
 
 @keyframes rotateAnimation {
   0% {
-    transform: translate(-50%, -50%) rotate(0deg) scale(4);
+    transform: translate(-50%, -50%) rotate(0deg) scale(0);
   }
   100% {
-    transform: translate(-50%, -50%) rotate(360deg) scale(4);
+    transform: translate(-50%, -50%) rotate(360deg) scale(2);
   }
 }
 

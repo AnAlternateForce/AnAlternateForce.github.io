@@ -1,6 +1,17 @@
-var n = ["89584206", "83589330", "84877389", "88078117", "92525420"];
-var randomIndex = Math.floor(Math.random() * n.length);
-var r = n[randomIndex];
+import {
+  trigger_effect,
+  getRandomDelay,
+  simulate_explosion,
+  spawn_at_random,
+  calculateContainerSize,
+  shake,
+  shakeAll,
+  rotate,
+  transitionScene,
+} from "../modules/scene.js";
+import { isMobileDevice, accurateHeight } from "../modules/utilities.js";
+import { initialize, append_chunk } from "../modules/shared.js";
+
 var data;
 var bg;
 var overlay;
@@ -8,233 +19,42 @@ var interval_1;
 var interval_2;
 var viewport;
 
-window.onload = function () {
-  // initialize();
-};
 document.addEventListener("DOMContentLoaded", () => {
   bg = document.getElementById("bg");
   overlay = document.getElementById("overlay");
   viewport = document.getElementById("permanent-viewport");
-  initialize();
+
+  if (isMobileDevice()) {
+    alert(
+      "For the most accurate experience, please use 1920x1080. BASICALLY don't use a phone."
+    );
+  }
+
+  setup();
 });
 
-function initialize() {
-  fetch("index.json")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Error`);
-      }
-      return response.json();
-    })
-    .then((jsonData) => {
-      data = jsonData;
-      console.log(data);
-      setup();
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-}
+function portalTo(x) {
+  var portal = document.getElementById("portal");
+  var tutorial = document.getElementById("tutorial");
+  var caution = document.getElementById("caution");
 
-function json_get(category, index) {
-  if (data[category] && data[category][index]) {
-    return {
-      display: data[category][index]["display"],
-      url: data[category][index]["url"],
-    };
-  } else {
-    return null;
-  }
-}
+  tutorial.textContent = "Hold on tight";
+  tutorial.style.color = "red";
 
-function append_chunk(id) {
-  const block = data[id];
-  if (block && block.length > 0) {
-    const list = document.createElement("ul");
-    list.classList.add("bulletless-list");
-
-    block.forEach((interest) => {
-      const listItem = document.createElement("li");
-      const link = document.createElement("a");
-
-      link.textContent = interest.display;
-
-      if (interest.url) {
-        list.classList.add("hyperlinks", "socials");
-        link.href = interest.url;
-
-        listItem.addEventListener("click", () => {
-          link.click();
-        });
-      }
-
-      listItem.appendChild(link);
-      list.appendChild(listItem);
-    });
-    const container = document.getElementById(id);
-    container.appendChild(list);
-  }
-}
-
-function rotate(div, deg) {
-  div.style.webkitTransform = "rotate(" + deg + "deg)";
-  div.style.mozTransform = "rotate(" + deg + "deg)";
-  div.style.msTransform = "rotate(" + deg + "deg)";
-  div.style.oTransform = "rotate(" + deg + "deg)";
-  div.style.transform = "rotate(" + deg + "deg)";
-}
-
-function shake(div, duration) {
-  div.style.animation = `shake ${duration}s ease-in-out`;
-
-  div.addEventListener("animationend", function (event) {
-    div.style.animation = "";
-  });
-}
-
-function shakeAll(duration) {
-  const x = document.querySelectorAll(".shakeable");
-  x.forEach((container) => {
-    shake(container, duration);
-  });
-}
-
-function spawn_rotate_image(container, url) {
-  const rotatingImage = document.createElement("img");
-  rotatingImage.src = url;
-  rotatingImage.classList.add("rotating-image");
-  container.appendChild(rotatingImage);
-}
-
-function spawn_at_random(duration) {
-  const div = document.createElement("div");
-  div.classList.add("viewport");
-  div.style.backdropFilter = "blur(10px)";
-
-  const image = document.createElement("img");
-  image.classList.add("shakeable", "explosion");
-  image.src = "assets/exp.png";
-
-  div.appendChild(image);
-  document.body.appendChild(div);
-
-  // Use requestAnimationFrame to wait for layout changes to be applied
-  requestAnimationFrame(() => {
-    const { width, height } = calculateContainerSize(div);
-    const randomX = Math.random() * (width - 100);
-    const randomY = Math.random() * (height - 100);
-    image.style.left = randomX + "px";
-    image.style.top = randomY + "px";
+  portal.classList.add("play");
+  portal.addEventListener("animationend", function (event) {
+    window.location.href = `https://driftinghaze.github.io/${x}/index.html`;
   });
 
-  setTimeout(() => {
-    document.body.removeChild(div);
-  }, duration);
-
-  /*
-  spawn_rotate_image(
-    div,
-    "https://pngimg.com/uploads/explosion/explosion_PNG15353.png"
-  );
-  */
-
-  // Apply Shake
-  shakeAll(1);
+  shakeAll(3);
 }
 
-function calculateContainerSize(container) {
-  const containerWidth = container.clientWidth;
-  const containerHeight = container.clientHeight;
-  return { width: containerWidth, height: containerHeight };
-}
-
-function simulate_explosion() {}
-
-function transitionScene(id) {
-  console.log("Transition Scene", id);
-  switch (id) {
-    case "safe":
-      bg.src = "assets/BG_CityOffice_Night_kr.jpg";
-      document.getElementById("safe-zone").style.display = "block";
-      document.getElementById("danger-zone").style.display = "none";
-      break;
-
-    case "danger":
-      const x = document.querySelectorAll(".container");
-      x.forEach((container) => {
-        shake(container, 2);
-        rotate(container, Math.floor(Math.random() * 15));
-      });
-      // shakeAll(2);
-
-      setTimeout(() => {
-        overlay.style.opacity = "1";
-        overlay.addEventListener("transitionend", function (event) {
-          viewport.classList.remove("entering-danger");
-          bg.src = "assets/BG_CityOffice_Ruin_kr.jpg";
-          document.getElementById("safe-zone").style.display = "none";
-          document.getElementById("danger-zone").style.display = "block";
-          overlay.style.opacity = "0";
-        });
-      }, 1000);
-      break;
-  }
-}
-
-function getRandomDelay(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function trigger_effect(id) {
-  switch (id) {
-    case "heli":
-      const heli = document.getElementById("heli");
-      heli.classList.add("active");
-      setTimeout(() => {
-        heli.classList.remove("active");
-      }, 5000);
-      break;
-  }
-}
-
+var delay = 400;
 function setup() {
-  append_chunk("interests");
-  append_chunk("games");
-  append_chunk("music");
-  append_chunk("socials");
-
-  transitionScene("safe");
-
-  setTimeout(() => {
-    viewport.classList.add("entering-danger");
-
-    setTimeout(() => {
-      transitionScene("danger");
-      interval_1 = setInterval(
-        () => spawn_at_random(2000),
-        getRandomDelay(2000, 10000)
-      );
-
-      interval_2 = setInterval(
-        () => trigger_effect("heli"),
-        getRandomDelay(8000, 20000)
-      );
-    }, 3000);
-  }, 10000);
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
+  document.getElementById("2023").addEventListener("click", function () {
+    portalTo("2023");
+  });
+  document.getElementById("2024").addEventListener("click", function () {
+    portalTo("2024");
   });
 }
-
-/*
-  spawn_rotate_image(
-    "interests",
-    "https://webstockreview.net/images/dust-clipart-film-3.png"
-  );
-  spawn_rotate_image(
-    "games",
-    "https://webstockreview.net/images/dust-clipart-film-3.png"
-  );
-  */
